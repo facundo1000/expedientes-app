@@ -1,9 +1,29 @@
 services:
   postgres:
     image: 'postgres:latest'
+    container_name: postgress
+    restart: always
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - 'POSTGRES_DB=expedientes'
+      - 'POSTGRES_PASSWORD=admin'
+      - 'POSTGRES_USER=admin'
     ports:
-      - '5432'
+      - '5433:5432'
+    networks:
+      - dbNet
+
+
+
+  adminer:
+    image: adminer
+    container_name: phpAdmin
+    restart: always
+    networks:
+      - dbNet
+    ports:
+      - "8001:8080"
+    depends_on:
+      - postgres
+
+networks:
+  dbNet:

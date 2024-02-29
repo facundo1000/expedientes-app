@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: expedientes-app
+
+
+  datasource:
+    url: jdbc:postgresql://postgress:5433:expediente
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    password: admin
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    sql: debug
+
+

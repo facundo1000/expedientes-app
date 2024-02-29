@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1180.0"
+           xmlns="http://javafx.com/javafx/17.0.2-ea"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="edu.unam.expedientesapp.controller.personas.CrearPersonasController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="668.0">
+         <children>
+            <AnchorPane prefHeight="76.0" prefWidth="591.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="45.0" prefWidth="405.0" style="-fx-font-family: Source Sans 3; -fx-font-weight: 600;" text="Registrando a una persona">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutY="55.0" prefHeight="12.0" prefWidth="910.0" />
+               </children></AnchorPane>
+            <Label layoutX="14.0" layoutY="76.0" prefHeight="21.0" prefWidth="137.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Tipo de documento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="177.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Número de documento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputNroDoc" layoutX="177.0" layoutY="97.0" prefHeight="25.0" prefWidth="162.0" />
+            <Label layoutX="366.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Nombre/s" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputNombres" layoutX="366.0" layoutY="97.0" prefHeight="25.0" prefWidth="240.0" />
+            <Label layoutX="635.0" layoutY="76.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Apellido/s" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputApellidos" layoutX="635.0" layoutY="97.0" prefHeight="25.0" prefWidth="240.0" />
+            <ComboBox fx:id="comboBoxTipoDoc" layoutX="14.0" layoutY="97.0" prefHeight="25.0" prefWidth="137.0" promptText="Seleccionar" />
+            <Label layoutX="14.0" layoutY="147.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Fecha de nacimiento" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datepickerFechaNac" layoutX="14.0" layoutY="168.0" prefHeight="25.0" prefWidth="137.0" />
+            <Label layoutX="176.0" layoutY="145.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Correo electrónico" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputCorreoElectronico" layoutX="176.0" layoutY="166.0" prefHeight="25.0" prefWidth="220.0" />
+            <Label layoutX="437.0" layoutY="197.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-weight: 600; -fx-font-family: Source Sans 3;" text="Categoría" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnLimpiarCampos" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="197.0" style="-fx-background-color: #D39C2F; -fx-font-family: Source Sans 3; -fx-font-weight: 500; -fx-border-color: #202123;" text="Limpiar campos" textAlignment="CENTER" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRegistrar" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="219.0" mnemonicParsing="false" onAction="#addPersona" prefHeight="41.0" prefWidth="168.0" style="-fx-background-color: #629C44; -fx-font-family: Source Sans 3; -fx-font-weight: 500; -fx-border-color: #202123;" text="Registrar" textAlignment="CENTER" textFill="#202123">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="418.0" layoutY="147.0" text="Telefono">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputTelefono" layoutX="418.0" layoutY="165.0" prefHeight="26.0" prefWidth="198.0" />
+            <CheckBox fx:id="chkEstudiante" layoutX="440.0" layoutY="231.0" mnemonicParsing="false" text="ESTUDIANTE" />
+            <CheckBox fx:id="chkDocente" layoutX="540.0" layoutY="231.0" mnemonicParsing="false" text="DOCENTE" />
+            <CheckBox fx:id="chkNoDocente" layoutX="616.0" layoutY="231.0" mnemonicParsing="false" text="NO_DOCENTE" />
+            <CheckBox fx:id="chkMiembro" layoutX="717.0" layoutY="231.0" mnemonicParsing="false" text="MIEMBRO" />
+            <CheckBox fx:id="chkDirector" layoutX="798.0" layoutY="231.0" mnemonicParsing="false" text="DIRECTOR" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
