@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -47,6 +48,7 @@ public class Persona implements Serializable {
     private TipoDeDocumento tipoDoc;
 
     @Column(name = "fecha_nac")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate bday;
 
     private Boolean asistencia;

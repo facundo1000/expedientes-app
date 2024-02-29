@@ -3,18 +3,17 @@ package edu.unam.expedientesapp.service.impl;
 import edu.unam.expedientesapp.models.Persona;
 import edu.unam.expedientesapp.repository.PersonaRepository;
 import edu.unam.expedientesapp.service.ServiceCrud;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PersonasServiceImpl implements ServiceCrud<Persona> {
 
-    private PersonaRepository repo;
-
-    public PersonasServiceImpl(PersonaRepository repo) {
-        this.repo = repo;
-    }
+    private final PersonaRepository repo;
 
     @Override
     public List<Persona> listar() {
@@ -32,12 +31,28 @@ public class PersonasServiceImpl implements ServiceCrud<Persona> {
     }
 
     @Override
-    public void actualizar(Long id, Persona persona) {
+    public Persona actualizar(Long id, Persona persona) {
+        Optional<Persona> update = repo.findById(id);
 
+        if(update.isPresent()){
+            update.get().setNombre(persona.getNombre());
+            update.get().setApellido(persona.getApellido());
+            update.get().setTipoDoc(persona.getTipoDoc());
+            update.get().setDni(persona.getDni());
+            update.get().setTelefono(persona.getTelefono());
+            update.get().setEmail(persona.getEmail());
+            update.get().setAsistencia(persona.getAsistencia());
+            update.get().setBday(persona.getBday());
+            update.get().setEliminado(persona.getEliminado());
+            update.get().setTipoDePersona(persona.getTipoDePersona());
+        }
+       return repo.save(update.get());
     }
 
     @Override
     public void eliminar(Long id) {
-
+        Optional<Persona> update = repo.findById(id);
+        update.ifPresent(persona -> persona.setEliminado(true));
+        repo.save(update.get());
     }
 }

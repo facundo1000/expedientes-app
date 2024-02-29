@@ -8,12 +8,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@Controller
 public class CrearPersonasController implements Initializable {
 
     @FXML
@@ -55,7 +59,11 @@ public class CrearPersonasController implements Initializable {
     @FXML
     private TextField inputTelefono;
 
+    @Autowired
     private ServiceCrud<Persona> personaCrud;
+
+    public CrearPersonasController() {
+    }
 
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -69,10 +77,15 @@ public class CrearPersonasController implements Initializable {
 
             alert.setContentText("Por favor complete los campos vacios");
         } else {
-            personaCrud.crear(new Persona(null,inputNombres.getText(),inputApellidos.getText(),
+            personaCrud.crear(new Persona(null, inputNombres.getText(), inputApellidos.getText(),
                     inputNroDoc.getText(),
                     inputTelefono.getText(),
-                    inputCorreoElectronico.getText(),List.of(),null,null,null,false));
+                    inputCorreoElectronico.getText(),
+                    List.of(chkDocente.getText(), chkNoDocente.getText(), chkEstudiante.getText(), chkMiembro.getText(), chkDirector.getText()),
+                    null,
+                    null,
+                    null,
+                    false));
         }
     }
 

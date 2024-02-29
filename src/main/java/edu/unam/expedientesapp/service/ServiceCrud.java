@@ -9,7 +9,7 @@ public interface ServiceCrud <T>{
 
     void crear(T t);
 
-    void actualizar(Long id, T t);
+    T actualizar(Long id, T t);
 
     void eliminar(Long id);
 }

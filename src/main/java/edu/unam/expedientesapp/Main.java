@@ -22,10 +22,9 @@ public class Main extends Application {
         applicationContext = SpringApplication.run(Main.class);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu.unam.expedientesapp/dashboard.fxml"));
 
-
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
-        stage.setTitle("Spring Boot with JavaFX");
+        stage.setTitle("Dashboard");
         stage.show();
     }
 }
