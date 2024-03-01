@@ -1,5 +1,6 @@
 package edu.unam.expedientesapp.service.impl;
 
+import edu.unam.expedientesapp.exception.NotFoundException;
 import edu.unam.expedientesapp.models.Persona;
 import edu.unam.expedientesapp.repository.PersonaRepository;
 import edu.unam.expedientesapp.service.ServiceCrud;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static edu.unam.expedientesapp.utils.ErrorType.PERSONA_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -32,21 +35,25 @@ public class PersonasServiceImpl implements ServiceCrud<Persona> {
 
     @Override
     public Persona actualizar(Long id, Persona persona) {
-        Optional<Persona> update = repo.findById(id);
 
-        if(update.isPresent()){
-            update.get().setNombre(persona.getNombre());
-            update.get().setApellido(persona.getApellido());
-            update.get().setTipoDoc(persona.getTipoDoc());
-            update.get().setDni(persona.getDni());
-            update.get().setTelefono(persona.getTelefono());
-            update.get().setEmail(persona.getEmail());
-            update.get().setAsistencia(persona.getAsistencia());
-            update.get().setBday(persona.getBday());
-            update.get().setEliminado(persona.getEliminado());
-            update.get().setTipoDePersona(persona.getTipoDePersona());
+        if (id > 0) {
+            Optional<Persona> update = repo.findById(id);
+            if (update.isPresent()) {
+                update.get().setNombre(persona.getNombre());
+                update.get().setApellido(persona.getApellido());
+                update.get().setTipoDoc(persona.getTipoDoc());
+                update.get().setDni(persona.getDni());
+                update.get().setTelefono(persona.getTelefono());
+                update.get().setEmail(persona.getEmail());
+                update.get().setAsistencia(persona.getAsistencia());
+                update.get().setBday(persona.getBday());
+                update.get().setEliminado(persona.getEliminado());
+                update.get().setTipoDePersona(persona.getTipoDePersona());
+                return repo.save(update.get());
+            }
         }
-       return repo.save(update.get());
+
+        throw new NotFoundException(PERSONA_NOT_FOUND, "Persona N°: " + id + " no pudo ser actualizada");
     }
 
     @Override
