@@ -2,9 +2,9 @@ package edu.unam.expedientesapp.controller;
 
 import edu.unam.expedientesapp.models.Persona;
 import edu.unam.expedientesapp.service.ServiceCrud;
-import edu.unam.expedientesapp.service.impl.PersonasServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -88,6 +88,8 @@ public class MainFormController implements Initializable {
 
     @FXML
     private AnchorPane greetUser;
+    @FXML
+    private Button btnSalir;
 
     @FXML
     private TableColumn<Persona, String> addPersonaColPersonaBday;
@@ -97,7 +99,8 @@ public class MainFormController implements Initializable {
 
     private Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-    public MainFormController() {}
+    public MainFormController() {
+    }
 
     public ObservableList<Persona> addPersonaGetData() {
         ObservableList<Persona> listData = FXCollections.observableArrayList();
@@ -132,10 +135,10 @@ public class MainFormController implements Initializable {
     }
 
     public void addPersonaBtn() {
+        Stage stage = new Stage();
+
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/edu.unam.expedientesapp/CrearPersonas.fxml")));
-
-            Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
             stage.show();
@@ -143,6 +146,11 @@ public class MainFormController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void exit(ActionEvent event) {
+        System.exit(0);
     }
 
     @Override

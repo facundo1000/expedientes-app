@@ -4,7 +4,7 @@ spring:
 
 
   datasource:
-    url: jdbc:postgresql://postgress:5433:expediente
+    url: jdbc:postgresql://postgress:5433/expediente
     driver-class-name: org.postgresql.Driver
     username: admin
     password: admin

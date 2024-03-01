@@ -44,8 +44,8 @@ public class Persona implements Serializable {
     private List<String> tipoDePersona;
 
     @Column(name = "tipo_doc")
-    @Enumerated(EnumType.STRING)
-    private TipoDeDocumento tipoDoc;
+//    @Enumerated(EnumType.STRING)
+    private String tipoDoc;
 
     @Column(name = "fecha_nac")
     @DateTimeFormat(pattern = "dd-MM-yyyy")

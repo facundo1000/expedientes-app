@@ -5,10 +5,10 @@ import edu.unam.expedientesapp.service.ServiceCrud;
 import edu.unam.expedientesapp.utils.TipoDeDocumento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -62,8 +62,7 @@ public class CrearPersonasController implements Initializable {
     @Autowired
     private ServiceCrud<Persona> personaCrud;
 
-    public CrearPersonasController() {
-    }
+    public CrearPersonasController() {}
 
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -82,12 +81,28 @@ public class CrearPersonasController implements Initializable {
                     inputTelefono.getText(),
                     inputCorreoElectronico.getText(),
                     List.of(chkDocente.getText(), chkNoDocente.getText(), chkEstudiante.getText(), chkMiembro.getText(), chkDirector.getText()),
-                    null,
-                    null,
-                    null,
+                    comboBoxTipoDoc.getSelectionModel().getSelectedItem(),
+                    datepickerFechaNac.getValue(),
+                    true,
                     false));
         }
     }
+
+    public void cleanFields() {
+        inputNombres.setText("");
+        inputApellidos.setText("");
+        inputCorreoElectronico.setText("");
+        inputTelefono.setText("");
+        inputCorreoElectronico.setText("");
+        inputNroDoc.setText("");
+        chkDirector.setSelected(false);
+        chkDocente.setSelected(false);
+        chkEstudiante.setSelected(false);
+        chkMiembro.setSelected(false);
+        chkNoDocente.setSelected(false);
+        comboBoxTipoDoc.getSelectionModel().clearSelection();
+    }
+
 
     public void tipoDniList() {
 
